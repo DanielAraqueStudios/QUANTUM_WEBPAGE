@@ -1,0 +1,19 @@
+# Ignore dependencies
+node_modules/
+
+# Ignore build output
+out/
+.next/
+build/
+
+# Ignore cache
+.turbo/
+
+# Ignore environment variables
+.env
+.env.local
+.env.production
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
