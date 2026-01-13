@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MagneticButton } from '@/components/MagneticButton';
 import styles from './Contact.module.css';
 
 export function Contact() {
@@ -163,17 +162,17 @@ export function Contact() {
                 />
               </div>
 
-              <MagneticButton
+              <button
                 type="submit"
-                variant="primary"
                 disabled={status === 'sending' || status === 'success'}
-                style={{ width: '100%', cursor: status !== 'idle' ? 'not-allowed' : 'pointer' }}
+                className={styles.submitButton}
+                style={{ cursor: status !== 'idle' ? 'not-allowed' : 'pointer' }}
               >
                 {status === 'idle' && 'Solicitar Cotización Gratis'}
                 {status === 'sending' && 'Enviando...'}
                 {status === 'success' && '✓ ¡Mensaje Enviado!'}
                 {status === 'error' && 'Error - Reintentar'}
-              </MagneticButton>
+              </button>
 
               {status === 'success' && (
                 <div className={styles.successMessage}>

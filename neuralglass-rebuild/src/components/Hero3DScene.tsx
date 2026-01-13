@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei';
+import { Environment, PerspectiveCamera } from '@react-three/drei';
 import { FloatingGeometry } from './FloatingGeometry';
 import { CameraRig } from './CameraRig';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
@@ -11,12 +11,16 @@ import * as THREE from 'three';
 function NeuralParticles() {
   const particlesRef = useRef<THREE.Points>(null);
 
-  const particles = new Float32Array(1000 * 3);
-  for (let i = 0; i < 1000; i++) {
-    particles[i * 3] = (Math.random() - 0.5) * 20;
-    particles[i * 3 + 1] = (Math.random() - 0.5) * 20;
-    particles[i * 3 + 2] = (Math.random() - 0.5) * 20;
-  }
+  // Memoize particle positions to avoid re-generation on re-render
+  const particles = useMemo(() => {
+    const positions = new Float32Array(1000 * 3);
+    for (let i = 0; i < 1000; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+    }
+    return positions;
+  }, []);
 
   useFrame((state) => {
     if (!particlesRef.current) return;
@@ -32,6 +36,7 @@ function NeuralParticles() {
           count={particles.length / 3}
           array={particles}
           itemSize={3}
+          args={[particles, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -99,16 +104,19 @@ function Scene() {
 
       {/* Environment and effects */}
       <Environment preset="night" />
-      
-      {/* Bloom effect for glow */}
-      <EffectComposer>
-        <Bloom
-          intensity={0.5}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.9}
-        />
-      </EffectComposer>
     </>
+  );
+}
+
+function Effects() {
+  return (
+    <EffectComposer>
+      <Bloom
+        intensity={0.5}
+        luminanceThreshold={0.2}
+        luminanceSmoothing={0.9}
+      />
+    </EffectComposer>
   );
 }
 
@@ -129,9 +137,15 @@ export function Hero3DScene() {
         dpr={[1, 2]}
         performance={{ min: 0.5 }}
         style={{ background: 'transparent' }}
+        gl={{ 
+          antialias: true,
+          alpha: true,
+          powerPreference: 'high-performance'
+        }}
       >
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
         <Scene />
+        <Effects />
       </Canvas>
     </div>
   );

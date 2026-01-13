@@ -225,6 +225,36 @@
   min-height: 120px;
 }
 
+.submitButton {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #e0a3ff, #ff69b4);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(224, 163, 255, 0.4);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .successMessage {
   padding: 20px;
   background: rgba(0, 255, 200, 0.1);

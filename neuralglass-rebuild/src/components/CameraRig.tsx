@@ -8,8 +8,8 @@ export function CameraRig() {
   const { camera, pointer } = useThree();
   const targetRef = useRef(new THREE.Vector3());
 
-  useFrame((state, delta) => {
-    // Smooth camera follow mouse
+  useFrame(() => {
+    // Smooth camera follow mouse using pointer (which is normalized)
     targetRef.current.x = THREE.MathUtils.lerp(
       targetRef.current.x,
       pointer.x * 2,
@@ -21,17 +21,19 @@ export function CameraRig() {
       0.05
     );
 
-    camera.position.x = THREE.MathUtils.lerp(
+    // Update camera position smoothly
+    const newX = THREE.MathUtils.lerp(
       camera.position.x,
       targetRef.current.x,
       0.05
     );
-    camera.position.y = THREE.MathUtils.lerp(
+    const newY = THREE.MathUtils.lerp(
       camera.position.y,
       targetRef.current.y,
       0.05
     );
-
+    
+    camera.position.set(newX, newY, camera.position.z);
     camera.lookAt(0, 0, 0);
   });
 

@@ -49,7 +49,7 @@ export function Hero() {
   return (
     <section className={styles.hero} id="home">
       {/* 3D Scene Background */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<div style={{ position: 'absolute', inset: 0 }} />}>
         <Hero3DScene />
       </Suspense>
 

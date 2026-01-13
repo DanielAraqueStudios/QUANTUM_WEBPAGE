@@ -10,6 +10,8 @@ interface MagneticButtonProps {
   variant?: 'primary' | 'secondary';
   href?: string;
   onClick?: () => void;
+  disabled?: boolean;
+  style?: React.CSSProperties;
 }
 
 export function MagneticButton({
@@ -17,9 +19,10 @@ export function MagneticButton({
   variant = 'primary',
   href,
   onClick,
+  disabled,
+  style
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     if (!buttonRef.current) return;
@@ -45,12 +48,10 @@ export function MagneticButton({
       duration: 0.6,
       ease: 'elastic.out(1, 0.5)',
     });
-    
-    setIsHovered(false);
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    // Magnetic effect activates
   };
 
   const className = `${styles.magneticButton} ${
@@ -63,6 +64,7 @@ export function MagneticButton({
         ref={buttonRef as React.RefObject<HTMLAnchorElement>}
         href={href}
         className={className}
+        style={style}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
@@ -77,6 +79,8 @@ export function MagneticButton({
     <motion.button
       ref={buttonRef as React.RefObject<HTMLButtonElement>}
       className={className}
+      style={style}
+      disabled={disabled}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
