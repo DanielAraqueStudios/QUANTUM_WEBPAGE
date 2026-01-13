@@ -60,27 +60,28 @@ export function Hero() {
         animate="visible"
       >
         <motion.div className={styles.heroSubtitle} variants={itemVariants}>
-          Welcome to the Future
+          Construimos y Hacemos Crecer Tu Negocio
         </motion.div>
 
         <motion.h1 variants={itemVariants}>
-          NEURAL INTERFACE
+          QUANTUM SOFTWARE & MARKETING
         </motion.h1>
 
         <motion.div className={styles.heroDescription} variants={itemVariants}>
           <p>
-            Experience the convergence of consciousness and technology through quantum-enhanced
-            glassmorphism interfaces. Step into a reality where digital dreams become tangible
-            experiences, transcending the boundaries between mind and machine.
+            Desarrollo de software a medida y marketing digital de alto rendimiento. 
+            Tecnología que funciona: rápida, escalable y 100% tuya. Marketing que convierte: 
+            crecimiento orgánico + campañas optimizadas para ROI. Transforma tu presencia digital 
+            con soluciones diseñadas para resultados reales.
           </p>
         </motion.div>
 
         <motion.div className={styles.heroStats} variants={itemVariants}>
           {[
-            { number: '99.9%', label: 'Neural Sync Rate' },
-            { number: '∞', label: 'Processing Power' },
-            { number: '0.001', label: 'Latency (ms)' },
-            { number: '24/7', label: 'Neural Access' },
+            { number: '12.7K', label: 'Seguidores Instagram' },
+            { number: '49.3K', label: 'Seguidores TikTok' },
+            { number: '6x', label: 'Crecimiento Ventas' },
+            { number: '100%', label: 'Código Propio' },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -99,11 +100,11 @@ export function Hero() {
         </motion.div>
 
         <motion.div className={styles.ctaButtons} variants={itemVariants}>
-          <MagneticButton variant="primary" href="#features">
-            Initialize Neural Link
+          <MagneticButton variant="primary" href="#services">
+            Ver Nuestros Servicios
           </MagneticButton>
-          <MagneticButton variant="secondary" href="#showcase">
-            Explore Matrix
+          <MagneticButton variant="secondary" href="#contact">
+            Solicitar Cotización
           </MagneticButton>
         </motion.div>
       </motion.div>

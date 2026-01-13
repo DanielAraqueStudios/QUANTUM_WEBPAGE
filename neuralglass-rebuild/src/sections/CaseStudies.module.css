@@ -1,0 +1,298 @@
+.caseStudies {
+  padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #e0a3ff;
+  margin-bottom: 50px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Social Proof Section */
+.socialProofSection {
+  margin-bottom: 120px;
+}
+
+.socialProofGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.socialCard {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.socialCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.socialCard:hover::before {
+  opacity: 0.05;
+}
+
+.socialCard:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(224, 163, 255, 0.2);
+}
+
+.socialPlatform {
+  font-size: 1rem;
+  color: #999;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.socialMetric {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1;
+  text-shadow: 0 0 30px currentColor;
+  position: relative;
+  z-index: 1;
+}
+
+.socialLabel {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.socialGrowth {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, rgba(224, 163, 255, 0.2), rgba(255, 105, 180, 0.2));
+  border: 1px solid rgba(224, 163, 255, 0.3);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  color: #e0a3ff;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* Case Studies Section */
+.caseStudiesSection {
+  margin-top: 100px;
+}
+
+.caseStudiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 50px;
+}
+
+.caseCard {
+  background: linear-gradient(135deg, rgba(224, 163, 255, 0.08), rgba(255, 105, 180, 0.06));
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(224, 163, 255, 0.2);
+  border-radius: 25px;
+  padding: 50px 40px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.caseCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.caseCard:hover::after {
+  opacity: 1;
+}
+
+.caseCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 105, 180, 0.4);
+  box-shadow: 
+    0 30px 60px rgba(224, 163, 255, 0.15),
+    0 0 0 1px rgba(224, 163, 255, 0.2);
+}
+
+.caseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.caseTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.caseGrowthBadge {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #e0a3ff, #ff69b4);
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  box-shadow: 0 0 20px rgba(224, 163, 255, 0.5);
+}
+
+.caseSection {
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.caseSectionLabel {
+  font-size: 0.85rem;
+  color: #e0a3ff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.caseSectionText {
+  font-size: 1.05rem;
+  color: #d1d1d1;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.caseResult {
+  margin: 30px 0;
+  padding: 25px;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.resultHighlight {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+.caseMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.metricItem {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.metricItem:hover {
+  background: rgba(224, 163, 255, 0.1);
+  border-color: rgba(224, 163, 255, 0.3);
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .caseStudiesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .caseStudies {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .socialProofGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .caseStudiesGrid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .caseCard {
+    padding: 35px 25px;
+  }
+
+  .caseHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .caseTitle {
+    font-size: 1.6rem;
+  }
+
+  .caseMetrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .socialMetric {
+    font-size: 2.8rem;
+  }
+}
