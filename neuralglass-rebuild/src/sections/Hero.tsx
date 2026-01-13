@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MagneticButton } from '@/components/MagneticButton';
 import styles from './Hero.module.css';
@@ -46,12 +46,20 @@ const statVariants = {
 };
 
 export function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section className={styles.hero} id="home">
-      {/* 3D Scene Background */}
-      <Suspense fallback={<div style={{ position: 'absolute', inset: 0 }} />}>
-        <Hero3DScene />
-      </Suspense>
+      {/* 3D Scene Background - Only render on client */}
+      {isMounted && (
+        <Suspense fallback={<div style={{ position: 'absolute', inset: 0 }} />}>
+          <Hero3DScene />
+        </Suspense>
+      )}
 
       <motion.div
         className={styles.heroContent}
